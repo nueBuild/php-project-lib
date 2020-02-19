@@ -1,0 +1,44 @@
+{
+    "name": "nuebuild/php-project-lib",
+    "description": "A library of php components for multiple platforms",
+    "type": "lib",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "jasonwitt",
+            "email": "info@nuebuild.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"NBPL\\": "src/classes"},
+        "classmap": [
+            "src/classes"
+        ],
+        "files": [
+            "src/functions/init.php",
+            "src/functions/general/elements/hide-email.php",
+            "src/functions/general/elements/load-files.php",
+            "src/functions/general/file-creation/build-csv.php",
+            "src/functions/general/media/get-svg.php",
+            "src/functions/general/media/set-svg-paths.php",
+            "src/functions/wordpress/acf/get-field.php",
+            "src/functions/wordpress/acf/get-flexible-content.php",
+            "src/functions/wordpress/acf/is-flexible-type.php",
+            "src/functions/wordpress/acf/register-blocks.php",
+            "src/functions/wordpress/formatting/allowed-tags.php",
+            "src/functions/wordpress/general/disable-templates.php",
+            "src/functions/wordpress/general/enqueue-scripts.php",
+            "src/functions/wordpress/general/enqueue-styles.php",
+            "src/functions/wordpress/general/theme-setup.php",
+            "src/functions/wordpress/media/rwd-image.php",
+            "src/functions/wordpress/posts/get-author-byline.php",
+            "src/functions/wordpress/posts/get-comments-title.php",
+            "src/functions/wordpress/posts/get-more-link.php",
+            "src/functions/wordpress/posts/get-post-id.php",
+            "src/functions/wordpress/posts/get-post-published.php",
+            "src/functions/wordpress/posts/get-post-updated.php"
+        ],
+        "classmap-authoritative": true
+    },
+    "require": {}
+}
