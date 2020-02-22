@@ -7,8 +7,9 @@
  * @author     Jason Witt <info@nuebuild.com>
  * @copyright  Copyright ((c) 2020, Jason Witt
  * @license    GNU General Public License v2 or later
- * @version    1.0.0
  * @since      1.0.0
+ *
+ * @version 1.0.1
  */
 
 namespace NBPL\WordPress\Posts;

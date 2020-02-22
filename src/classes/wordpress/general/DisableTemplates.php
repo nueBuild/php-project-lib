@@ -7,8 +7,9 @@
  * @author     Jason Witt <info@nuebuild.com>
  * @copyright  Copyright ((c) 2020, Jason Witt
  * @license    GNU General Public License v2 or later
- * @version    1.0.0
  * @since      1.0.0
+ *
+ * @version 1.0.1
  */
 
 namespace NBPL\WordPress\General;
@@ -25,7 +26,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\DisableTemplates' ) ) {
 	 * Disable Templates.
 	 *
 	 * @author Jason Witt
-	 * @since  Plugin_Boilerplate_Version
+	 * @since  1.0.0
 	 */
 	class DisableTemplates extends Base {
 

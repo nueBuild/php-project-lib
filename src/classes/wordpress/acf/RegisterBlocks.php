@@ -7,8 +7,9 @@
  * @author     Jason Witt <info@nuebuild.com>
  * @copyright  Copyright ((c) 2020, Jason Witt
  * @license    GNU General Public License v2 or later
- * @version    1.0.0
  * @since      1.0.0
+ *
+ * @version 1.0.1
  */
 
 namespace NBPL\WordPress\ACF;
@@ -25,7 +26,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\RegisterBlocks' ) ) {
 	 * Register Gutenberg blocks.
 	 *
 	 * @author Jason Witt
-	 * @since  Plugin_Boilerplate_Version
+	 * @since  1.0.0
 	 */
 	class RegisterBlocks extends Base {
 
@@ -43,7 +44,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\RegisterBlocks' ) ) {
 		 * Initialize the class
 		 *
 		 * @author Jason Witt
-		 * @since  Plugin_Boilerplate_Version
+		 * @since  1.0.0
 		 *
 		 * @param array $args {
 		 *     Array of gutenburg blocks to register.

@@ -1,6 +1,7 @@
 {
     "name": "nuebuild/php-project-lib",
     "description": "A library of php components for multiple platforms",
+    "version": "1.0.1",
     "type": "lib",
     "license": "GPL-2.0-or-later",
     "authors": [
