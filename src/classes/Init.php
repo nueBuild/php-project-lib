@@ -8,7 +8,7 @@
  * @license   GNU General Public License v2 or later
  * @since     1.0.0
  *
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 namespace NBPL;
