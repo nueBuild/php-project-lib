@@ -38,7 +38,6 @@
             "src/functions/wordpress/posts/get-post-published.php",
             "src/functions/wordpress/posts/get-post-updated.php"
         ],
-        "classmap-authoritative": true
     },
     "require": {}
 }
