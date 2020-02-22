@@ -2,4 +2,4 @@
 
 ------
 
-A PHP libray with commonlu used PHP functionality.
+A PHP libray with commonly used PHP functionality.
