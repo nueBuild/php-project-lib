@@ -37,7 +37,7 @@
             "src/functions/wordpress/posts/get-post-id.php",
             "src/functions/wordpress/posts/get-post-published.php",
             "src/functions/wordpress/posts/get-post-updated.php"
-        ],
+        ]
     },
     "require": {}
 }
