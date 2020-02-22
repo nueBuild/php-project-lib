@@ -110,11 +110,17 @@ if ( ! class_exists( __NAMESPACE__ . '\\PostUpdated' ) ) {
 		 * @return void
 		 */
 		public function render() {
+			$post = get_post();
+
+			if ( $post ) {
+				setup_postdata( $post );
+			}
+
 			$time_classes = ( $this->args->time_classes ) ? ' class="' . esc_attr( $this->time_classes_filter() ) . '"' : '';
 			$time_tag     = '<time' . $time_classes . ' datetime="%1$s">%2$s</time>';
 			$time         = sprintf( $time_tag, esc_attr( get_the_modified_date( 'c' ) ), esc_html( get_the_modified_date() ) );
 			$classes      = ( $this->args->classes ) ? ' class="' . esc_attr( $this->classes_filter() ) . '"' : '';
-			$output       = '<div' . $classes . '>' . esc_html( $this->args->text ) . ' <a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">' . $time . '</a></div>';
+			$output       = '<div' . $classes . '><span class="label">' . esc_html( $this->args->text ) . '</span> <a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">' . $time . '</a></div>';
 
 			/**
 			 * Action before returing the output

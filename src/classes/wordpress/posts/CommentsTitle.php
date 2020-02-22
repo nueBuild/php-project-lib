@@ -130,6 +130,12 @@ if ( ! class_exists( __NAMESPACE__ . '\\CommentsTitle' ) ) {
 		 * @return void
 		 */
 		public function render() {
+			$post = get_post();
+
+			if ( $post ) {
+				setup_postdata( $post );
+			}
+
 			$classes = ( $this->args->classes ) ? ' class="' . esc_attr( $this->classes_filter() ) . '"' : '';
 			$output  = '<span' . $classes . '>' . esc_html( $this->comments_title_filter() ) . ' ' . esc_html( get_the_title() ) . '</span>';
 

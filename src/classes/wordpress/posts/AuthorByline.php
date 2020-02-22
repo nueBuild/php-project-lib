@@ -138,13 +138,19 @@ if ( ! class_exists( __NAMESPACE__ . '\\AuthorByline' ) ) {
 		 * @return void
 		 */
 		public function render() {
+			$post = get_post();
+
+			if ( $post ) {
+				setup_postdata( $post );
+			}
+
 			$link_classes    = ( $this->args->link_classes ) ? ' class="' . esc_attr( $this->link_classes_filter() ) . '"' : '';
 			$url             = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
 			$link_markup     = '<a' . $link_classes . ' href="' . esc_url( $url ) . '">' . esc_html( get_the_author() ) . '</a>';
 			$link            = ( $this->args->link ) ? $link_markup : esc_html( get_the_author() );
 			$byline_classes  = ( $this->args->byline_classes ) ? ' class="' . esc_attr( $this->byline_classes_filter() ) . '"' : '';
 			$wrapper_classes = ( $this->args->wrapper_classes ) ? ' class="' . esc_attr( $this->wrapper_classes_filter() ) . '"' : '';
-			$output          = '<' . $this->args->wrapper . $byline_classes . '>' . esc_html( $this->author_label_filter() ) . ' <span' . $wrapper_classes . '>' . $link . '</span></' . $this->args->wrapper . '>';
+			$output          = '<' . $this->args->wrapper . $byline_classes . '><span class="label">' . esc_html( $this->author_label_filter() ) . '</span> <span' . $wrapper_classes . '>' . $link . '</span></' . $this->args->wrapper . '>';
 
 			/**
 			 * Action before returing the output

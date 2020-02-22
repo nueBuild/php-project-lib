@@ -57,7 +57,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\PostPublished' ) ) {
 		 */
 		public function set_defaults() {
 			return array(
-				'text'                 => __( 'Published: ', 'nbpl' ),
+				'label'                => __( 'Published: ', 'nbpl' ),
 				'time_classes'         => 'entry__published-time published-time',
 				'time_updated_classes' => 'entry__published-time-updated published-time-updated',
 				'classes'              => 'entry__published published',
@@ -123,11 +123,17 @@ if ( ! class_exists( __NAMESPACE__ . '\\PostPublished' ) ) {
 		 * @return void
 		 */
 		public function render() {
+			$post = get_post();
+
+			if ( $post ) {
+				setup_postdata( $post );
+			}
+
 			$time_classes = ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) ? $this->time_classes_filter() : $this->time_updated_classes_filter();
 			$time_tag     = '<time class="' . esc_attr( $time_classes ) . '" datetime="%1$s">%2$s</time>';
 			$time         = sprintf( $time_tag, esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date() ) );
 			$classes      = ( $this->args->classes ) ? ' class="' . esc_attr( $this->classes_filter() ) . '"' : '';
-			$output       = '<div' . $classes . '>' . esc_html( $this->args->text ) . ' <a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">' . $time . '</a></div>';
+			$output       = '<div' . $classes . '><span class="label">' . esc_html( $this->args->label ) . '</span> <a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">' . $time . '</a></div>';
 
 			/**
 			 * Action before returing the output

@@ -109,6 +109,12 @@ if ( ! class_exists( __NAMESPACE__ . '\\MoreLink' ) ) {
 		 * @return void
 		 */
 		public function render() {
+			$post = get_post();
+
+			if ( $post ) {
+				setup_postdata( $post );
+			}
+
 			$classes = ( $this->args->classes ) ? ' class="' . esc_attr( $this->classes_filter() ) . '"' : '';
 			$output  = sprintf( '<' . $this->args->wrapper . $classes . '><a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">%s</a></' . $this->args->wrapper . '>', esc_html( $this->more_text_filter() ) );
 
