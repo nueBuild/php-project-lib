@@ -21,7 +21,14 @@ if ( ! function_exists( 'nbpl_get_post_published' ) ) {
 	 * @author Jason Witt
 	 * @since  1.0.0
 	 *
-	 * @param array $args The arguments.
+	 * @param array $args {
+	 *     The arguments.
+	 *
+	 *     @type string $label                (Optional) The label for the plublished date: Defualt: 'Published: '.
+	 *     @type string $time_classes         (Optional) The classes for the time element. Defualt: 'entry__published-time published-time'.
+	 *     @type string $time_updated_classes (Optional) The classes for the time updated element. Defualt: 'entry__published-time-updated published-time-updated'.
+	 *     @type string $classes              (Optional) The classes for the published element. Defualt: 'entry__published published'.
+	 * }
 	 *
 	 * @return string
 	 */

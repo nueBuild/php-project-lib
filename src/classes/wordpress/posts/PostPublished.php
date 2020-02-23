@@ -35,10 +35,10 @@ if ( ! class_exists( __NAMESPACE__ . '\\PostPublished' ) ) {
 		 * @param array $args {
 		 *     The arguments.
 		 *
-		 *     @type string $more_text The text for the more link.
-		 *                             Default: 'Continue Reading'.
-		 *     @type string $classes   The classes for the more text span tag.
-		 *                             Defualt: null.
+		 *     @type string $label                (Optional) The label for the plublished date: Defualt: 'Published: '.
+		 *     @type string $time_classes         (Optional) The classes for the time element. Defualt: 'entry__published-time published-time'.
+		 *     @type string $time_updated_classes (Optional) The classes for the time updated element. Defualt: 'entry__published-time-updated published-time-updated'.
+		 *     @type string $classes              (Optional) The classes for the published element. Defualt: 'entry__published published'.
 		 * }
 		 *
 		 * @return void

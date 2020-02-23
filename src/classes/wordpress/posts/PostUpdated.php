@@ -35,10 +35,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\PostUpdated' ) ) {
 		 * @param array $args {
 		 *     The arguments.
 		 *
-		 *     @type string $more_text The text for the more link.
-		 *                             Default: 'Continue Reading'.
-		 *     @type string $classes   The classes for the more text span tag.
-		 *                             Defualt: null.
+		 *     @type string $label        (Optional) The label for the plublished date: Defualt: 'Published: '.
+		 *     @type string $time_classes (Optional) The classes for the time element. Defualt: 'entry__published-time published-time'.
+		 *     @type string $classes      (Optional) The classes for the published element. Defualt: 'entry__published published'.
 		 * }
 		 *
 		 * @return void
@@ -58,7 +57,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\PostUpdated' ) ) {
 		 */
 		public function set_defaults() {
 			return array(
-				'text'         => __( 'Updated: ', 'nbpl' ),
+				'label'        => __( 'Updated: ', 'nbpl' ),
 				'time_classes' => 'entry__updated-time updated-time',
 				'classes'      => 'entry__updated updated-on',
 			);
@@ -121,7 +120,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\PostUpdated' ) ) {
 			$time_tag     = '<time' . $time_classes . ' datetime="%1$s">%2$s</time>';
 			$time         = sprintf( $time_tag, esc_attr( get_the_modified_date( 'c' ) ), esc_html( get_the_modified_date() ) );
 			$classes      = ( $this->args->classes ) ? ' class="' . esc_attr( $this->classes_filter() ) . '"' : '';
-			$output       = '<div' . $classes . '><span class="label">' . esc_html( $this->args->text ) . '</span> <a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">' . $time . '</a></div>';
+			$output       = '<div' . $classes . '><span class="label">' . esc_html( $this->args->label ) . '</span> <a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">' . $time . '</a></div>';
 
 			/**
 			 * Action before returing the output

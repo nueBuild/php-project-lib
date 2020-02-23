@@ -21,7 +21,13 @@ if ( ! function_exists( 'nbpl_get_more_link' ) ) {
 	 * @author Jason Witt
 	 * @since  1.0.0
 	 *
-	 * @param array $args The arguments.
+	 * @param array $args {
+	 *     The arguments.
+	 *
+	 *     @type string $more_text (Optional) The text for the more link. Default: 'Continue Reading'.
+	 *     @type string $wrapper   (Optional) The wrapper html tag. Default: 'div'.
+	 *     @type string $classes   (Optional) The classes for the more text span tag. Defualt: 'more-text'.
+	 * }
 	 *
 	 * @return string
 	 */
