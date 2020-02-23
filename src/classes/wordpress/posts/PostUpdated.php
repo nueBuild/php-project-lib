@@ -9,7 +9,7 @@
  * @license    GNU General Public License v2 or later
  * @since      1.0.0
  *
- * @version 1.0.4
+ * @version 1.0.5
  */
 
 namespace NBPL\WordPress\Posts;
