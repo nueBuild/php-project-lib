@@ -2,4 +2,4 @@
 
 ------
 
-A PHP libray with commonly used PHP functionality.
+[Documentaion](https://github.com/nueBuild/php-project-lib/wiki)
