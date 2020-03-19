@@ -127,9 +127,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\Nav_Walker' ) ) {
 			 */
 			$id   = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
 			$id   = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-			$role = ' role="menuitem"';
 
-			$output .= $indent . '<li' . $id . $class_names . $role . ' >';
+			$output .= $indent . '<li' . $id . $class_names . ' >';
 
 			$atts           = array();
 			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
@@ -181,7 +180,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\Nav_Walker' ) ) {
 			$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
 
 			$item_output  = $args->before;
-			$item_output .= '<a' . $attributes . ' role="link">';
+			$item_output .= '<a' . $attributes . '>';
 			$item_output .= $args->link_before . $title . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;
