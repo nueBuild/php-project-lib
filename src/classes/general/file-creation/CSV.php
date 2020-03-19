@@ -98,7 +98,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\CSV' ) ) {
 					$header_array = array();
 					foreach ( $this->args->header as $header ) {
 						foreach ( $header as $key => $value ) {
-							$header_arrayout[] = $key;
+							$header_array[] = $key;
 						}
 					}
 					fputcsv( $output, $header_array );
