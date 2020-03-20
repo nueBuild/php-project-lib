@@ -24,6 +24,8 @@ if ( ! function_exists( 'nbpl_enqueue_scripts' ) ) {
 	 * @param array $args {
 	 *     The arguments for adding JavaScript.
 	 *
+	 *     @type string $dir_path (Required) The directory path.
+	 *     @type string $dir_url  (Required) The directory url.
 	 *     @type array $scripts {
 	 *         Arguments for enqueuing the scripts.
 	 *

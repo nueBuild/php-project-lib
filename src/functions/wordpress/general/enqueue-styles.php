@@ -24,6 +24,8 @@ if ( ! function_exists( 'nbpl_enqueue_styles' ) ) {
 	 * @param array $args {
 	 *     The arguments for adding Stylesheets.
 	 *
+	 *     @type string $dir_path (Required) The directory path.
+	 *     @type string $dir_url  (Required) The directory url.
 	 *      @type array $styles {
 	 *         Arguments for enqueuing the stylesheets.
 	 *
