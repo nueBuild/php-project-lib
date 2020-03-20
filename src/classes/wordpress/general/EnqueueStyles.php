@@ -39,6 +39,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\EnqueueStyles' ) ) {
 		 * @param array $args {
 		 *     The arguments for adding Stylesheets.
 		 *
+		 *     @type string $dir_path (Required) The directory path.
+		 *     @type string $dir_url  (Required) The directory url.
 		 *      @type array $styles {
 		 *         Arguments for enqueuing the stylesheets.
 		 *
@@ -79,6 +81,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\EnqueueStyles' ) ) {
 		 */
 		public function set_defaults() {
 			return array(
+				'dir_path'     => '',
+				'dir_url'      => '',
 				'styles'       => array(
 					'handle'      => '',
 					'file'        => '',
@@ -185,16 +189,19 @@ if ( ! class_exists( __NAMESPACE__ . '\\EnqueueStyles' ) ) {
 				return;
 			}
 
+			$dir_path  = ! empty( $this->args->dir_path ) ? $this->args->dir_path : '';
+			$dir_url   = ! empty( $this->args->dir_url ) ? $this->args->dir_url : '';
 			$handle    = ! empty( $style['handle'] ) ? $style['handle'] : '';
 			$file      = ! empty( $style['file'] ) ? $style['file'] : '';
+			$file_path = trailingslashit( $dir_path ) . $file;
 			$depends   = ! empty( $style['depends'] ) ? $style['depends'] : array();
 			$media     = ! empty( $style['media'] ) ? $style['media'] : 'all';
-			$file_time = ! empty( $style['file'] ) && file_exists( trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_PATH' ) ) . $style['file'] ) ? filemtime( trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_PATH' ) ) . $style['file'] ) : '1.0.0';
-			$check     = ! empty( $handle ) && ! empty( $file );
+			$file_time = ! empty( $style['file'] ) && file_exists( $file_path ) ? filemtime( $file_path ) : '1.0.0';
+			$check     = ! empty( $handle ) && ! empty( $file ) && file_exists( $file_path );
 
-			if ( $check && file_exists( trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_PATH' ) ) . $file ) ) {
-				wp_register_style( constant( NBPL_CONST_PREFIX . '_PREFIX' ) . '-' . $handle, trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_URL' ) ) . $file, $depends, $file_time, $media );
-				wp_enqueue_style( constant( NBPL_CONST_PREFIX . '_PREFIX' ) . '-' . $handle );
+			if ( $check ) {
+				wp_register_style( $handle, trailingslashit( $dir_url ) . $file, $depends, $file_time, $media );
+				wp_enqueue_style( $handle );
 			}
 		}
 	}

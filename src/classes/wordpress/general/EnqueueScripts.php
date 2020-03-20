@@ -39,6 +39,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\EnqueueScripts' ) ) {
 		 * @param array $args {
 		 *     The arguments for adding JavaScript.
 		 *
+		 *     @type string $dir_path (Required) The directory path.
+		 *     @type string $dir_url  (Required) The directory url.
 		 *     @type array $scripts {
 		 *         Arguments for enqueuing the scripts.
 		 *
@@ -103,6 +105,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\EnqueueScripts' ) ) {
 		 */
 		public function set_defaults() {
 			return array(
+				'dir_path'        => '',
+				'dir_url'         => '',
 				'scripts'         => array(
 					'handle'      => '',
 					'file'        => '',
@@ -273,16 +277,19 @@ if ( ! class_exists( __NAMESPACE__ . '\\EnqueueScripts' ) ) {
 				return;
 			}
 
+			$dir_path  = ! empty( $this->args->dir_path ) ? $this->args->dir_path : '';
+			$dir_url   = ! empty( $this->args->dir_url ) ? $this->args->dir_url : '';
 			$handle    = ! empty( $script['handle'] ) ? $script['handle'] : '';
 			$file      = ! empty( $script['file'] ) ? $script['file'] : '';
+			$file_path = trailingslashit( $dir_path ) . $file;
 			$depends   = ! empty( $script['depends'] ) ? $script['depends'] : array();
-			$file_time = ! empty( $script['file'] ) && file_exists( trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_PATH' ) ) . $script['file'] ) ? filemtime( trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_PATH' ) ) . $script['file'] ) : '1.0.0';
+			$file_time = ! empty( $file ) && file_exists( $file_path ) ? filemtime( $file_path ) : '1.0.0';
 			$in_footer = ! empty( $script['in_footer'] ) ? $script['in_footer'] : true;
-			$check     = ! empty( $handle ) && ! empty( $file );
+			$check     = ! empty( $handle ) && ! empty( $file ) && file_exists( $file_path );
 
-			if ( $check && file_exists( trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_PATH' ) ) . $file ) ) {
-				wp_register_script( constant( NBPL_CONST_PREFIX . '_PREFIX' ) . '-' . $handle, trailingslashit( constant( NBPL_CONST_PREFIX . '_DIR_URL' ) ) . $file, $depends, $file_time, $in_footer );
-				wp_enqueue_script( constant( NBPL_CONST_PREFIX . '_PREFIX' ) . '-' . $handle );
+			if ( $check ) {
+				wp_register_script( $handle, trailingslashit( $dir_url ) . $file, $depends, $file_time, $in_footer );
+				wp_enqueue_script( $handle );
 			}
 		}
 
