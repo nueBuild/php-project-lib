@@ -3,7 +3,7 @@
  * Get Post ID
  *
  * @package    NBPL
- * @subpackage NBPL/Functions/WordPress/Formatting
+ * @subpackage NBPL/Functions/WordPress/Post
  * @author     NueBuild
  * @copyright  Copyright (c) 2020, NueBuild
  * @license    GNU General Public License v2 or later
