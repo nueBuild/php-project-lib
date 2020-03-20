@@ -170,8 +170,12 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 				$theme_data = function_exists( 'wp_get_theme' ) ? wp_get_theme() : '';
 				$name       = $theme_data->get( 'Name' );
 			} elseif ( 'plugins' === $content_dir ) {
-				$plugin_data = function_exists( 'get_plugin_data ' ) ? get_plugin_data( args['dir_path'] ) : '';
-				$name        = $plugin_data['Name'];
+				if ( ! function_exists( 'get_plugin_data' ) ) {
+					require_once ABSPATH . 'wp-admin/includes/plugin.php';
+				}
+
+				$plugin_data = function_exists( 'get_plugin_data' ) ? get_plugin_data( $args['root_file'], false ) : '';
+				$name        = ! empty( $plugin_data['Name'] ) ? $plugin_data['Name'] : '';
 			}
 
 			return $name;
