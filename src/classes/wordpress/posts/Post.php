@@ -70,5 +70,65 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 
 			return $post_id;
 		}
+
+		/**
+		 * Posts Using Templates
+		 *
+		 * @author Jason Witt
+		 * @since  1.0.0
+		 *
+		 * @param string|array $templates The template(s) to check if a post uses template.
+		 *
+		 * @return array
+		 */
+		public function posts_using_templates( $templates ) {
+			$list  = array();
+			$pages = array();
+
+			if ( is_array( $templates ) ) {
+				foreach ( $templates as $template ) {
+					$pages = $this->get_posts_using_templates( $template );
+
+					foreach ( $pages as $page ) {
+						$list[] = array(
+							'template' => $template,
+							'ID'        => $page->ID,
+							'title'     => $page->post_title,
+						);
+					}
+				}
+			} else {
+				$pages = $this->get_posts_using_templates( $templates );
+
+				foreach ( $pages as $page ) {
+					$list[] = array(
+						'template' => $templates,
+						'ID'        => $page->ID,
+						'title'     => $page->post_title,
+					);
+				}
+			}
+
+			return $list;
+		}
+
+		/**
+		 * Get Posts Using Templates
+		 *
+		 * @author Jason Witt
+		 * @since  1.0.0
+		 *
+		 * @return object
+		 */
+		public function get_posts_using_templates( $template ) {
+			return get_posts(
+				array(
+					'post_type'      => array( 'page', 'post' ),
+					'posts_per_page' => -1,
+					'meta_key'       => '_wp_page_template',
+					'meta_value'     => $template // phpcs:ignore
+				)
+			);
+		}
 	}
 }
