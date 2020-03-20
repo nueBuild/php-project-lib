@@ -78,12 +78,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\HasShortcode' ) ) {
 			$has_shortcode = false;
 			$post_id       = $this->post_id;
 
-			// TODO: REMOVE!
-			error_log( 'post_id: ' . print_r( $post_id, true ) ); // phpcs:ignore
-
 			if ( empty( $post_id ) ) {
-				// TODO: REMOVE!
-				error_log( ': ' . print_r( 'Run If', true ) ); // phpcs:ignore
 				$post_id = nbpl_get_post_id();
 			}
 
