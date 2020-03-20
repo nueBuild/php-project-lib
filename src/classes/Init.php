@@ -54,9 +54,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 			$init_defaults   = $this->set_init_defaults( $args );
 			$this->init_args = Parse::array_to_object( $args, $init_defaults );
 
-			// TODO: REMOVE!
-			error_log( '$this->init_args: ' . print_r( $this->init_args, true ) ); // phpcs:ignore
-
 			$this->set_constants();
 
 			// Allowed Tags.
