@@ -57,15 +57,10 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 				if ( ! empty( $post->ID ) ) {
 					$post_id = $post->ID;
 				}
-			} elseif ( ! empty( $wp_query ) ) {
-
-				if ( ! empty( $wp_query->post->ID ) ) {
-					$post_id = $wp_query->post->ID;
-				}
-
-				if ( ! empty( $wp_query->get_queried_object_id() ) ) {
-					$post_id = $wp_query->get_queried_object_id();
-				}
+			} elseif ( ! empty( $wp_query ) && ! empty( $wp_query->post->ID ) ) {
+				$post_id = $wp_query->post->ID;
+			} elseif ( ! empty( $wp_query ) && ! empty( $wp_query->get_queried_object_id() ) ) {
+				$post_id = $wp_query->get_queried_object_id();
 			} else {
 				$scheme  = is_ssl() ? 'http' : 'https';
 				$request = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : ''; // phpcs:ignore
