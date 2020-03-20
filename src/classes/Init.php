@@ -54,8 +54,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 			$init_defaults   = $this->set_init_defaults( $args );
 			$this->init_args = Parse::array_to_object( $args, $init_defaults );
 
-			$this->set_constants();
-
 			// Allowed Tags.
 			if ( class_exists( 'WP' ) ) {
 				if ( false !== $this->init_args->allowed_tags ) {
@@ -98,17 +96,12 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 					'formatted_prefix' => strtolower( str_replace( array( '-', ' ' ), '_', $this->get_project_name( $init_args ) ) ),
 					'allowed_tags'     => true,
 				);
-
-				$defaults['constant_prefix'] = ! empty( $defaults['formatted_prefix'] ) ? strtoupper( $defaults['formatted_prefix'] ) : '';
 			} else {
 				$defaults = array(
 					'root_dir'     => basename( dirname( $init_args['root_file'] ) ),
 					'root_url'     => '',
 					'project_name' => '',
 				);
-
-				$defaults['formatted_prefix'] = ! empty( $defaults['project_name'] ) ? strtolower( str_replace( array( '-', ' ' ), '_', $defaults['project_name'] ) ) : '';
-				$defaults['constant_prefix']  = ! empty( $defaults['formatted_prefix'] ) ? strtoupper( $defaults['formatted_prefix'] ) : '';
 			}
 
 			try {
@@ -129,32 +122,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 			}
 
 			return $defaults;
-		}
-
-		/**
-		 * Set Constants
-		 *
-		 * @author Jason Witt
-		 * @since  1.0.0
-		 *
-		 * @return void
-		 */
-		public function set_constants() {
-			if ( ! defined( 'NBPL_CONST_PREFIX' ) ) {
-				define( 'NBPL_CONST_PREFIX', 'NBPL_' . $this->init_args->constant_prefix );
-			}
-
-			if ( ! defined( 'NBPL_' . $this->init_args->constant_prefix . '_DIR_PATH' ) ) {
-				define( 'NBPL_' . $this->init_args->constant_prefix . '_DIR_PATH', $this->init_args->root_dir . '/' );
-			}
-
-			if ( ! defined( 'NBPL_' . $this->init_args->constant_prefix . '_DIR_URL' ) ) {
-				define( 'NBPL_' . $this->init_args->constant_prefix . '_DIR_URL', $this->init_args->root_url . '/' );
-			}
-
-			if ( ! defined( 'NBPL_' . $this->init_args->constant_prefix . '_PREFIX' ) ) {
-				define( 'NBPL_' . $this->init_args->constant_prefix . '_PREFIX', $this->init_args->constant_prefix );
-			}
 		}
 
 		/**
