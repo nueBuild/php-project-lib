@@ -30,6 +30,7 @@ class ComposerStaticInitf75fab2deb5366601ba0467e578099e1
         'a5d5eb4a13d30402de4b267c01c75b14' => __DIR__ . '/../..' . '/src/functions/wordpress/posts/get-post-id.php',
         'e799cd0f3e7b366045e0959984dba1e1' => __DIR__ . '/../..' . '/src/functions/wordpress/posts/get-post-published.php',
         '5eb58be060c342b110a1579a8457cf03' => __DIR__ . '/../..' . '/src/functions/wordpress/posts/get-post-updated.php',
+        'ca893120c9e130adf37e2719c29b8a26' => __DIR__ . '/../..' . '/src/functions/wordpress/posts/posts-using-templates.php',
     );
 
     public static $prefixLengthsPsr4 = array (

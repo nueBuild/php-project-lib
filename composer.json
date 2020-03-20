@@ -37,7 +37,8 @@
             "src/functions/wordpress/posts/get-more-link.php",
             "src/functions/wordpress/posts/get-post-id.php",
             "src/functions/wordpress/posts/get-post-published.php",
-            "src/functions/wordpress/posts/get-post-updated.php"
+            "src/functions/wordpress/posts/get-post-updated.php",
+            "src/functions/wordpress/posts/posts-using-templates.php"
         ]
     },
     "require": {}
