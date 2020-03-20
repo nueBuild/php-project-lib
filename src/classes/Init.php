@@ -54,6 +54,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 			$init_defaults   = $this->set_init_defaults( $args );
 			$this->init_args = Parse::array_to_object( $args, $init_defaults );
 
+			// TODO: REMOVE!
+			error_log( '$this->init_args: ' . print_r( $this->init_args, true ) ); // phpcs:ignore
+
 			$this->set_constants();
 
 			// Allowed Tags.
@@ -85,9 +88,14 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 			}
 
 			if ( class_exists( 'WP' ) ) {
+				$project_type_dir = basename( dirname( dirname( $init_args['root_file'] ) ) );
+				$project_dir      = basename( dirname( $init_args['root_file'] ) );
+				$root_filename    = basename( basename( basename( $init_args['root_file'] ) ) );
+				$project_root_url = trailingslashit( WP_CONTENT_URL ) . trailingslashit( $project_type_dir ) . trailingslashit( $project_dir ) . $root_filename;
+
 				$defaults = array(
 					'root_dir'         => dirname( $init_args['root_file'] ),
-					'root_url'         => function_exists( 'get_stylesheet_directory_uri' ) ? get_stylesheet_directory_uri() : '',
+					'root_url'         => $project_root_url,
 					'content_dir'      => basename( dirname( dirname( $init_args['root_file'] ) ) ),
 					'project_name'     => $this->get_project_name( $init_args ),
 					'formatted_prefix' => strtolower( str_replace( array( '-', ' ' ), '_', $this->get_project_name( $init_args ) ) ),
@@ -148,7 +156,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Init' ) ) {
 			}
 
 			if ( ! defined( 'NBPL_' . $this->init_args->constant_prefix . '_PREFIX' ) ) {
-				define( 'NBPL_' . $this->init_args->constant_prefix . '_PREFIX', $this->init_args->formatted_prefix );
+				define( 'NBPL_' . $this->init_args->constant_prefix . '_PREFIX', $this->init_args->constant_prefix );
 			}
 		}
 
