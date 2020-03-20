@@ -63,7 +63,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\HasShortcode' ) ) {
 		 */
 		public function __construct( $shortcode = '', $post_id = '' ) {
 			$this->shortcode = $shortcode;
-			$this_post_id    = $post_id;
+			$this->post_id   = $post_id;
 		}
 
 		/**
@@ -78,7 +78,12 @@ if ( ! class_exists( __NAMESPACE__ . '\\HasShortcode' ) ) {
 			$has_shortcode = false;
 			$post_id       = $this->post_id;
 
+			// TODO: REMOVE!
+			error_log( 'post_id: ' . print_r( $post_id, true ) ); // phpcs:ignore
+
 			if ( empty( $post_id ) ) {
+				// TODO: REMOVE!
+				error_log( ': ' . print_r( 'Run If', true ) ); // phpcs:ignore
 				$post_id = nbpl_get_post_id();
 			}
 
@@ -86,9 +91,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\HasShortcode' ) ) {
 			if ( empty( $post_id ) || '0' === $post_id ) {
 				return;
 			}
-
-			// TODO: REMOVE!
-			error_log( 'post_id: ' . print_r( $post_id, true ) ); // phpcs:ignore
 
 			$content = get_the_content( null, false, $post_id ) ? get_the_content( null, false, $post_id ) : '';
 
