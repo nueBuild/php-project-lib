@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 if ( ! function_exists( 'nbpl_post_uses_template' ) ) {
 	/**
-	 * Allowed Tags
+	 * Posts Using Templates
 	 *
 	 * @author Jason Witt
 	 * @since  1.0.0
@@ -25,7 +25,7 @@ if ( ! function_exists( 'nbpl_post_uses_template' ) ) {
 	 *
 	 * @return int
 	 */
-	function nbpl_post_uses_template( $templates ) {
+	function nbpl_post_using_template( $templates ) {
 		$class = new NBPL\WordPress\Posts\Post();
 		return $class->posts_using_templates( $templates );
 	}
