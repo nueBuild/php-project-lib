@@ -92,8 +92,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 					foreach ( $pages as $page ) {
 						$list[] = array(
 							'template' => $template,
-							'ID'        => $page->ID,
-							'title'     => $page->post_title,
+							'ID'       => $page->ID,
+							'title'    => $page->post_title,
 						);
 					}
 				}
@@ -103,8 +103,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 				foreach ( $pages as $page ) {
 					$list[] = array(
 						'template' => $templates,
-						'ID'        => $page->ID,
-						'title'     => $page->post_title,
+						'ID'       => $page->ID,
+						'title'    => $page->post_title,
 					);
 				}
 			}
