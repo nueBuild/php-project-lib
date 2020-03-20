@@ -66,6 +66,11 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 				if ( ! empty( $wp_query->get_queried_object_id() ) ) {
 					$post_id = $wp_query->get_queried_object_id();
 				}
+			} else {
+				$scheme  = is_ssl() ? 'http' : 'https';
+				$request = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : ''; // phpcs:ignore
+				$url     = "$scheme://$_SERVER[HTTP_HOST]$request"; // phpcs:ignore
+				$post_id = url_to_postid( $url );
 			}
 
 			return $post_id;
