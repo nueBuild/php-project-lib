@@ -14,6 +14,7 @@ return array(
     'NBPL\\Init' => $baseDir . '/src/classes/Init.php',
     'NBPL\\WordPress\\ACF\\ACF' => $baseDir . '/src/classes/wordpress/acf/ACF.php',
     'NBPL\\WordPress\\ACF\\RegisterBlocks' => $baseDir . '/src/classes/wordpress/acf/RegisterBlocks.php',
+    'NBPL\\WordPress\\Conditionals\\HasShortcode' => $baseDir . '/src/classes/wordpress/conditionals/HasShortcode.php',
     'NBPL\\WordPress\\Formatting\\AllowedTags' => $baseDir . '/src/classes/wordpress/formatting/AllowedTags.php',
     'NBPL\\WordPress\\General\\DisableTemplates' => $baseDir . '/src/classes/wordpress/general/DisableTemplates.php',
     'NBPL\\WordPress\\General\\EnqueueScripts' => $baseDir . '/src/classes/wordpress/general/EnqueueScripts.php',

@@ -25,6 +25,7 @@
             "src/functions/wordpress/acf/get-flexible-content.php",
             "src/functions/wordpress/acf/is-flexible-type.php",
             "src/functions/wordpress/acf/register-blocks.php",
+            "src/functions/wordpress/conditionals/has-sortcode.php",
             "src/functions/wordpress/formatting/allowed-tags.php",
             "src/functions/wordpress/general/disable-templates.php",
             "src/functions/wordpress/general/enqueue-scripts.php",

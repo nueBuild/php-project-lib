@@ -16,6 +16,7 @@ return array(
     'f0a0ea610e700e0cf4ba5a9c55d691e5' => $baseDir . '/src/functions/wordpress/acf/get-flexible-content.php',
     '3d7df3b52fe6e7b848ea5d8b511a98cc' => $baseDir . '/src/functions/wordpress/acf/is-flexible-type.php',
     '89d2d0ffecfb92d3cedd97dadcea7921' => $baseDir . '/src/functions/wordpress/acf/register-blocks.php',
+    '4fc14928846af742a95b065eaea9552f' => $baseDir . '/src/functions/wordpress/conditionals/has-sortcode.php',
     'ae19675a2a69031fcac456f831e57f1c' => $baseDir . '/src/functions/wordpress/formatting/allowed-tags.php',
     'd3f477040cc457128d6eb18b48927e21' => $baseDir . '/src/functions/wordpress/general/disable-templates.php',
     '01152f0f90c5147db4420bc10abcaa3b' => $baseDir . '/src/functions/wordpress/general/enqueue-scripts.php',
