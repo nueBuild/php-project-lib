@@ -29,5 +29,6 @@ return array(
     'a5d5eb4a13d30402de4b267c01c75b14' => $baseDir . '/src/functions/wordpress/posts/get-post-id.php',
     'e799cd0f3e7b366045e0959984dba1e1' => $baseDir . '/src/functions/wordpress/posts/get-post-published.php',
     '5eb58be060c342b110a1579a8457cf03' => $baseDir . '/src/functions/wordpress/posts/get-post-updated.php',
+    '9afe07bac95cc2a39c513ae25cacd5c2' => $baseDir . '/src/functions/wordpress/posts/posts-using-shortcodes.php',
     'ca893120c9e130adf37e2719c29b8a26' => $baseDir . '/src/functions/wordpress/posts/posts-using-templates.php',
 );
