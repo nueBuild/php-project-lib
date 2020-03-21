@@ -75,7 +75,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 		 * Posts Using Templates
 		 *
 		 * @author Jason Witt
-		 * @since  1.0.0
+		 * @since  1.0.6
 		 *
 		 * @param string|array $templates The template(s) to check if a post uses template.
 		 *
@@ -116,7 +116,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 		 * Get Posts Using Templates
 		 *
 		 * @author Jason Witt
-		 * @since  1.0.0
+		 * @since  1.0.6
+		 *
+		 * @param string $template The template file.
 		 *
 		 * @return object
 		 */
@@ -129,6 +131,50 @@ if ( ! class_exists( __NAMESPACE__ . '\\Post' ) ) {
 					'meta_value'     => $template // phpcs:ignore
 				)
 			);
+		}
+
+		/**
+		 * Posts using shortcodes
+		 *
+		 * @author Jason Witt
+		 * @since  1.0.6
+		 *
+		 * @param string|array $shortcodes The shortcode(s) to check if a post is using.
+		 *
+		 * @return array
+		 */
+		public function posts_using_shortcodes( $shortcodes = array() ) {
+			$list  = array();
+			$posts = get_posts(
+				array(
+					'post_type'      => array( 'page', 'post' ),
+					'posts_per_page' => -1,
+				)
+			);
+
+			foreach ( $posts as $post ) {
+				if ( is_array( $shortcodes ) ) {
+					foreach ( $shortcodes as $shortcode ) {
+						if ( false !== strpos( $post->post_content, '[' . $shortcode ) ) {
+							$list[] = array(
+								'shortcode' => $shortcode,
+								'ID'        => $post->ID,
+								'title'     => $post->post_title,
+							);
+						}
+					}
+				} else {
+					if ( false !== strpos( $post->post_content, '[' . $shortcodes ) ) {
+						$list[] = array(
+							'shortcode' => $shortcodes,
+							'ID'        => $post->ID,
+							'title'     => $post->post_title,
+						);
+					}
+				}
+			}
+
+			return $list;
 		}
 	}
 }
